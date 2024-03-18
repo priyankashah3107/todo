@@ -21,7 +21,7 @@ function App() {
    // Delete Todo Logic 
 
   const deleteTodo = (id) => {
-    setTodos((prev) => prev.filter((prevTodo) => prevTodo !== id))
+    setTodos((prev) => prev.filter((prevTodo) => prevTodo.id !== id))
   }
 
 // toggleComplete 
