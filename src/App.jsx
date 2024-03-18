@@ -61,7 +61,13 @@ useEffect(() => {
 
             <div className="flex flex-wrap gap-y-3">
               {/* Loops and todo items here */}
-              <TodoItems />
+              {todos.map((todo) => (
+                 <div className="w-full"
+                   key={todo.id}>
+                    <TodoItems todo={todo}/>
+                   </div>
+              ))}
+              {/* <TodoItems /> */}
             </div>
        </div> 
  </div>
