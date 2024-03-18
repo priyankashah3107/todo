@@ -10,7 +10,7 @@ function TodoForm() {
          
          if(!todo) return;
 
-         setTodo({todo, completed: false})
+         addTodo({todo, completed: false})
          setTodo("")
     }
 
