@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TodoProvider } from "./context"
 function App() {
    const [todos, setTodos] = useState([])
@@ -28,6 +28,24 @@ const toggleComplete = (id) => {
     //  setTodos((prev) => prev.map((prevTodo) => prevTodo === id ? "true" : "false"))
     setTodos((prev) => prev.map((prevTodo) => prevTodo === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo))
 }
+
+
+// Using useEffect hook for setting  and getting  value from the LocalStorage
+// localStorage mei ofcourse phle valueget krte hai then usse set krte hai 
+
+useEffect(() => {
+  const todos =  JSON.parse(localStorage.getItem("todos"))
+     if(todos && todos.length > 0) {
+      setTodos(todos)
+     }
+},[])
+
+// Getting the items from the localStroage
+
+useEffect(() => {
+     localStorage.setItem("todos", JSON.stringify(todos))
+
+}, [todos])
 
   return (
    <TodoProvider  value={{todos,  addTodo, updateTodo,deleteTodo, toggleComplete}}>
